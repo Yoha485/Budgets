@@ -1,0 +1,39 @@
+version: "3.9"
+volumes:
+  postgres_data:
+
+services:
+  postgres:
+    container_name: budgets-db
+    image: postgres:11.13-alpine
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-budgets-db}
+      POSTGRES_USER: ${DATABASE_USER:-user}
+      POSTGRES_PASSWORD: ${DATABASE_PASS:-pass}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      budgets:
+        ipv4_address: ${NETWORK_PREFIX:-172.4}.4.3
+        aliases:
+          - budgets.db.loc
+
+  backend:
+    depends_on:
+      - postgres
+    build:
+      context: ./
+      dockerfile: docker/backend.Dockerfile
+    image: backend:docker
+    ports:
+      - 8081:80
+
+networks:
+  budgets:
+    name: budgets
+    ipam:
+      config:
+        - subnet: "${NETWORK_PREFIX:-172.4}.4.0/24"
