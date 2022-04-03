@@ -17,7 +17,7 @@ services:
       - "5432:5432"
     networks:
       budgets:
-        ipv4_address: ${NETWORK_PREFIX:-172.4}.4.3
+        ipv4_address: ${NETWORK_PREFIX:-172.30}.4.3
         aliases:
           - budgets.db.loc
 
@@ -28,6 +28,8 @@ services:
       context: ./
       dockerfile: docker/backend.Dockerfile
     image: backend:docker
+    env_file: 
+      - .env
     ports:
       - 8081:80
 
@@ -36,4 +38,4 @@ networks:
     name: budgets
     ipam:
       config:
-        - subnet: "${NETWORK_PREFIX:-172.4}.4.0/24"
+        - subnet: "${NETWORK_PREFIX:-172.30}.4.0/24"
