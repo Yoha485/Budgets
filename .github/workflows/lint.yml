@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  eslint:
+  build-backend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,9 +12,24 @@ jobs:
         with:
           node-version: 16
       
-      - name: 'Lint'
+      - name: 'Lint and Build Backend'
         run: |
           cd ./backend
           npm install
           npm run lint
+          npm run build
+
+  build-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+        
+      - name: 'Build Frontend'
+        run: |
+          cd ./frontend/my-app
+          npm install
+          npm run build
 
