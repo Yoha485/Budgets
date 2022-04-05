@@ -8,18 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatabaseConnectionService = void 0;
 const common_1 = require("@nestjs/common");
+const dotenv = require("dotenv");
+dotenv.config();
 let DatabaseConnectionService = class DatabaseConnectionService {
     createTypeOrmOptions() {
         return {
             name: 'default',
             type: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            username: 'user',
-            password: 'pass',
-            database: 'budgets-db',
+            host: process.env.DATABASE_HOST,
+            port: +process.env.DATABASE_PORT,
+            username: process.env.DATABASE_USER,
+            password: process.env.DATABASE_PASS,
+            database: process.env.DATABASE_NAME,
+            ssl: {
+                rejectUnauthorized: false,
+            },
             synchronize: true,
-            dropSchema: false,
+            dropSchema: true,
             logging: false,
             entities: ['dist/**/*.entity.js'],
         };

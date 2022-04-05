@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const auth_module_1 = require("./auth/auth/auth.module");
 const database_connection_service_1 = require("./database-connection.service");
 let AppModule = class AppModule {
 };
@@ -18,6 +19,7 @@ AppModule = __decorate([
             typeorm_1.TypeOrmModule.forRootAsync({
                 useClass: database_connection_service_1.DatabaseConnectionService,
             }),
+            auth_module_1.AuthModule,
         ],
         controllers: [],
         providers: [],

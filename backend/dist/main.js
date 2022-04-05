@@ -10,7 +10,6 @@ async function bootstrap() {
         credentials: false,
         allowedHeaders: '*',
     });
-    console.log(process.env.DATABASE_HOST);
     await app.listen(process.env.PORT || 4000);
 }
 bootstrap();
