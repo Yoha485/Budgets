@@ -1,19 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 @Injectable()
 export class DatabaseConnectionService implements TypeOrmOptionsFactory {
+	constructor(private configService: ConfigService) {}
+
 	createTypeOrmOptions(): TypeOrmModuleOptions {
 		return {
 			name: 'default',
 			type: 'postgres',
-			host: process.env.DATABASE_HOST,
-			port: +process.env.DATABASE_PORT,
-			username: process.env.DATABASE_USER,
-			password: process.env.DATABASE_PASS,
-			database: process.env.DATABASE_NAME,
+			host: this.configService.get<string>('DATABASE_HOST'),
+			port: this.configService.get<number>('DATABASE_PORT'),
+			username: this.configService.get<string>('DATABASE_USER'),
+			password: this.configService.get<string>('DATABASE_PASS'),
+			database: this.configService.get<string>('DATABASE_NAME'),
 			ssl: {
 				rejectUnauthorized: false,
 			},
