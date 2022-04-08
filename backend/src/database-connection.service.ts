@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
-import * as dotenv from 'dotenv';
 
-dotenv.config();
 @Injectable()
 export class DatabaseConnectionService implements TypeOrmOptionsFactory {
 	constructor(private configService: ConfigService) {}
