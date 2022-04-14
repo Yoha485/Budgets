@@ -4,13 +4,14 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserRepository } from 'src/user/user.repository';
+import { WalletRepository } from 'src/wallet/wallet.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({
 	imports: [
-		TypeOrmModule.forFeature([UserRepository]),
+		TypeOrmModule.forFeature([UserRepository, WalletRepository]),
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
 			useFactory: async (configService: ConfigService) => ({
