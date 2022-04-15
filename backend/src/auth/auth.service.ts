@@ -2,6 +2,7 @@ import {
 	ConflictException,
 	Injectable,
 	InternalServerErrorException,
+	Logger,
 	UnauthorizedException,
 } from '@nestjs/common';
 import { LoginDto, RegisterDto } from 'src/user/user.dto';
@@ -12,11 +13,15 @@ import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
+	private readonly logger;
+
 	constructor(
 		private userRepository: UserRepository,
 		private walletRepository: WalletRepository,
 		private jwtService: JwtService,
-	) {}
+	) {
+		this.logger = new Logger;
+	}
 
 	async register(credentials: RegisterDto): Promise<any> {
 		try {
@@ -33,13 +38,13 @@ export class AuthService {
 				userId: user.id,
 			});
 			await wallet.save();
-
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
+			this.logger.log(`User registered id=${user.id}`);
 			return { user: { ...user.toJson(), token } };
-		} catch (err) {
-			console.log(err);
-			if (err.code === '23505') {
+		} catch (error) {
+			this.logger.error(error);
+			if (error.code === '23505') {
 				throw new ConflictException('Username has alredy been taken');
 			}
 			throw new InternalServerErrorException();
@@ -55,8 +60,10 @@ export class AuthService {
 			}
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
+			this.logger.log(`User logged in id=${user.id}`);
 			return { user: { ...user.toJson(), token } };
-		} catch (err) {
+		} catch (error) {
+			this.logger.error(error);
 			throw new UnauthorizedException('Invalid credentials');
 		}
 	}

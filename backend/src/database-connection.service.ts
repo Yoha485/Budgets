@@ -19,7 +19,7 @@ export class DatabaseConnectionService implements TypeOrmOptionsFactory {
 				rejectUnauthorized: false,
 			},
 			synchronize: true,
-			dropSchema: true,
+			dropSchema: false,
 			logging: false,
 			entities: ['dist/**/*.entity.js'],
 		};
