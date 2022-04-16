@@ -10,26 +10,28 @@ import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from 'src/user/user.repository';
 import { WalletRepository } from 'src/wallet/wallet.repository';
 import * as bcrypt from 'bcryptjs';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
-	private readonly logger;
+	private readonly logger: Logger;
 
 	constructor(
 		private userRepository: UserRepository,
 		private walletRepository: WalletRepository,
 		private jwtService: JwtService,
+		private configService: ConfigService
 	) {
-		this.logger = new Logger;
+		this.logger = new Logger();
 	}
 
 	async register(credentials: RegisterDto): Promise<any> {
 		try {
-			const user = await this.userRepository.create({
+			const user = this.userRepository.create({
 				...credentials,
 				password: bcrypt.hashSync(
 					credentials.password,
-					Number(process.env.SHIFT),
+					Number(this.configService.get<number>('SHIFT')),
 				),
 			});
 			await user.save();
@@ -54,7 +56,7 @@ export class AuthService {
 	async login({ email, password }: LoginDto): Promise<any> {
 		try {
 			const user = await this.userRepository.findOne({ where: { email } });
-			const isValid = await user.comparePassword(password);
+			const isValid = user.comparePassword(password);
 			if (!isValid) {
 				throw new UnauthorizedException('Invalid credentials');
 			}

@@ -5,7 +5,7 @@ import { UpdateUserDto } from './user.dto';
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 
-@UseGuards(AuthGuard())
+@UseGuards(AuthGuard('jwt'))
 @Controller('user')
 export class UserController {
 	constructor(private userService: UserService) {}

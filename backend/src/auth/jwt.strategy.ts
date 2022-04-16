@@ -10,14 +10,16 @@ import { ConfigService } from '@nestjs/config';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private userRepository: UserRepository, private configService: ConfigService) {
     super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
       secretOrKey: configService.get<string>('SECRET_KEY') || 'secret',
     });
   }
 
   async validate(payload: AuthPayload): Promise<UserEntity> {
+    console.log('tt')
     const { id } = payload;
-    const user = this.userRepository.findOne(id);
+    const user = await this.userRepository.findOne(id);
     if (!user) {
       throw new UnauthorizedException();
     }
