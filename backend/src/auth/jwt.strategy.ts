@@ -8,21 +8,18 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private userRepository: UserRepository, private configService: ConfigService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
-      secretOrKey: configService.get<string>('SECRET_KEY') || 'secret',
-    });
-  }
+	constructor(
+		private userRepository: UserRepository,
+		private configService: ConfigService,
+	) {
+		super({
+			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+			ignoreExpiration: false,
+			secretOrKey: configService.get<string>('SECRET_KEY') || 'secret',
+		});
+	}
 
-  async validate(payload: AuthPayload): Promise<UserEntity> {
-    console.log('tt')
-    const { id } = payload;
-    const user = await this.userRepository.findOne(id);
-    if (!user) {
-      throw new UnauthorizedException();
-    }
-    return user;
-  }
+	async validate(payload: AuthPayload): Promise<UserEntity> {
+		return this.userRepository.findOne(payload.id);
+	}
 }
