@@ -1,9 +1,9 @@
-import './App.css';
+import { HomePage } from './app/containers/HomePage';
 
 function App() {
   return (
-    <div className="font-bold">
-      App
+    <div>
+      <HomePage />
     </div>
   );
 }

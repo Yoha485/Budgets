@@ -1,6 +1,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      biryani: ["Biryani"],
+      display: ["Open Sans", "sans-serif"],
+      body: ["Open Sans", "sans-serif"],
+    },
     extend: {},
     screens: {
       sm: "648px",
