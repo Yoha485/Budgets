@@ -1,6 +1,6 @@
 import React from "react";
 
-export const SpeedometerImg = () => {
+export const SpeedometerIcon = () => {
   return (
     <svg
       width="80"

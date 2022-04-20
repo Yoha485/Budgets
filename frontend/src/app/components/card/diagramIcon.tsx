@@ -1,6 +1,6 @@
 import React from "react";
 
-export const DiagramImg = () => {
+export const DiagramIcon = () => {
   return (
     <svg
       width="80"

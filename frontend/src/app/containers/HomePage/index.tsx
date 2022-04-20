@@ -1,9 +1,9 @@
-import React from 'react'
-import { BackgroundCircles } from '../../components/backgroundCircles'
-import { Navbar } from '../../components/navbar'
-import { Heading } from './heading'
-import { HomeCards } from './homeCards'
-import { PageContainer } from './styles'
+import React from "react";
+import { BackgroundCircles } from "../../components/backgroundCircles";
+import { Navbar } from "../../components/navbar";
+import { Heading } from "./heading";
+import { HomeCards } from "./homeCards";
+import { PageContainer } from "./styles";
 
 export const HomePage = () => {
   return (
@@ -13,5 +13,5 @@ export const HomePage = () => {
       <Heading />
       <HomeCards />
     </PageContainer>
-  )
-}
+  );
+};

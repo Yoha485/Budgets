@@ -21,5 +21,5 @@ export const LogoContainer = styled.div`
 `;
 
 export const AuthButtons = styled.div`
-  ${tw`flex flex-row justify-end items-center gap-7`}
-`
+	${tw`flex flex-row justify-end items-center gap-7`}
+`;

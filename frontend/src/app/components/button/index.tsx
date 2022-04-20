@@ -1,15 +1,15 @@
 import React from "react";
 import { ButtonContainer } from "./styles";
-import {MdOutlineKeyboardArrowRight} from 'react-icons/md'
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
-interface IButtonProps {
+interface ButtonProps {
   text: string;
   color: "white" | "green";
   rounded?: boolean;
   arrow?: boolean;
 }
 
-export const Button = (props: IButtonProps) => {
+export const Button = (props: ButtonProps) => {
   return (
     <ButtonContainer background={props.color} rounded={props.rounded}>
       {props.text}

@@ -1,19 +1,19 @@
 import React from "react";
-import { DiagramImg } from "./diagramImg";
-import { SpeedometerImg } from "./speedometerImg";
+import { DiagramIcon } from "./diagramIcon";
+import { SpeedometerIcon } from "./speedometerIcon";
 import { CardContainer, CardImg, CardSubtitle, CardText, CardTitle } from "./styles";
 
-interface ICardProps {
+interface CardProps {
   title: string;
   subtitle: string;
-  img: "diagram" | "speedometer";
+  icon: "diagram" | "speedometer";
 }
 
-export const Card = (props: ICardProps) => {
+export const Card = (props: CardProps) => {
   return (
     <CardContainer>
       <CardImg>
-        {props.img === "diagram" ? <DiagramImg /> : <SpeedometerImg />}
+        {props.icon === "diagram" ? <DiagramIcon /> : <SpeedometerIcon />}
       </CardImg>
 
       <CardText>

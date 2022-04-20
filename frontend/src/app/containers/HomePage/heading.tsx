@@ -11,7 +11,7 @@ export const Heading = () => {
       <Subtitle>
         The only app that gets your money <Br /> into shape
       </Subtitle>
-      <Button text="Get Your Account Now" color='green' rounded arrow />
+      <Button text="Get Your Account Now" color="green" rounded arrow />
     </HeadingContainer>
   );
 };
