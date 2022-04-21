@@ -1,10 +1,10 @@
-import React from "react";
-import { ButtonContainer } from "./styles";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import React from 'react';
+import { ButtonContainer } from './styles';
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 interface ButtonProps {
   text: string;
-  color: "white" | "green";
+  color: 'white' | 'green';
   rounded?: boolean;
   arrow?: boolean;
 }

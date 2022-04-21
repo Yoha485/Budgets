@@ -1,6 +1,6 @@
-import React from "react";
-import { BsCoin } from "react-icons/bs";
-import { LogoContainer, Image, LogoText } from "./styles";
+import React from 'react';
+import { BsCoin } from 'react-icons/bs';
+import { LogoContainer, Image, LogoText } from './styles';
 
 export const Logo = () => {
   return (

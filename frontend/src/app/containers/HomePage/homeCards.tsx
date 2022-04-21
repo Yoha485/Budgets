@@ -1,6 +1,6 @@
-import React from "react";
-import { Card } from "../../components/card";
-import { HomeCardsContainer } from "./styles";
+import React from 'react';
+import { Card } from '../../components/card';
+import { HomeCardsContainer } from './styles';
 
 export const HomeCards = () => {
   return (

@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "../button";
-import { Logo } from "../logo";
-import { AuthButtons, LogoContainer, NavbarContainer } from "./styles";
+import React from 'react';
+import { Button } from '../button';
+import { Logo } from '../logo';
+import { AuthButtons, LogoContainer, NavbarContainer } from './styles';
 
 export const Navbar = () => {
   return (

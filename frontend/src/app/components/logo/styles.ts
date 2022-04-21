@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import tw from "twin.macro";
+import styled from 'styled-components';
+import tw from 'twin.macro';
 
 export const LogoContainer = styled.div`
-  ${tw`
+	${tw`
     flex
     items-center
     h-full
@@ -10,7 +10,7 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoText = styled.div`
-  ${tw`
+	${tw`
     h-full
     text-xl
     md:text-2xl
@@ -24,12 +24,12 @@ export const LogoText = styled.div`
 `;
 
 export const Image = styled.div`
-  width: auto;
+	width: auto;
 
-  ${tw`text-[#29c074] h-full`};
+	${tw`text-[#29c074] h-full`};
 
-  img {
-    width: auto;
-    height: 100%;
-  }
+	img {
+		width: auto;
+		height: 100%;
+	}
 `;

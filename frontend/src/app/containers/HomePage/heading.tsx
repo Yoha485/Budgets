@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "../../components/button";
-import { Br, HeadingContainer, MainTitle, Subtitle } from "./styles";
+import React from 'react';
+import { Button } from '../../components/button';
+import { Br, HeadingContainer, MainTitle, Subtitle } from './styles';
 
 export const Heading = () => {
   return (
