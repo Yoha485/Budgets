@@ -42,7 +42,7 @@ export class AuthService {
 			await wallet.save();
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
-			this.logger.log(`User registered id=${user.id}`);
+			this.logger.log(`USER REGISTERED ID=${user.id}`);
 			return { user: { ...user.toJson(), token } };
 		} catch (error) {
 			this.logger.error(error);
@@ -62,7 +62,7 @@ export class AuthService {
 			}
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
-			this.logger.log(`User logged in id=${user.id}`);
+			this.logger.log(`USER LOGGED IN ID=${user.id}`);
 			return { user: { ...user.toJson(), token } };
 		} catch (error) {
 			this.logger.error(error);

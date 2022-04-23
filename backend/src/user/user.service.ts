@@ -15,7 +15,7 @@ export class UserService {
 	async findById(id: number): Promise<Record<string, any>> {
 		try {
 			const user = await this.userRepository.findOneOrFail(id);
-			this.logger.log(`Get user id=${id}`);
+			this.logger.log(`GET USER ID=${id}`);
 			return user.toJson();
 		} catch (error) {
 			this.logger.error(error);
@@ -29,7 +29,7 @@ export class UserService {
 			data.password = bcrypt.hashSync(data.password, 10);
 			const res = await this.userRepository.save({ ...user, ...data });
 			const { password, ...resWithoutPassword } = res;
-			this.logger.log(`Update user id=${id}`);
+			this.logger.log(`UPDATE USER ID=${id}`);
 			return resWithoutPassword;
 		} catch (error) {
 			this.logger.error(error);
@@ -41,7 +41,7 @@ export class UserService {
 		try {
 			const user = await this.userRepository.findOneOrFail(id);
 			await this.userRepository.delete(user);
-			this.logger.log(`Delete user id=${id}`);
+			this.logger.log(`DELETE USER ID=${id}`);
 			return user;
 		} catch (error) {
 			this.logger.error(error);
