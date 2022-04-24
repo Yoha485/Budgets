@@ -8,11 +8,7 @@ import { WalletRepository } from 'src/wallet/wallet.repository';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-	constructor(
-		private userRepository: UserRepository,
-		private walletRepository: WalletRepository,
-		private configService: ConfigService,
-	) {
+	constructor(private userRepository: UserRepository, private configService: ConfigService) {
 		super({
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 			ignoreExpiration: false,
@@ -22,9 +18,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
 	async validate(payload: AuthPayload): Promise<Object> {
 		const user = await this.userRepository.findOne(payload.id);
-		const wallet = await this.walletRepository.findOne({
-			where: { userId: user?.id },
-		});
-		return { ...user, walletId: wallet.id };
+		return user;
 	}
 }

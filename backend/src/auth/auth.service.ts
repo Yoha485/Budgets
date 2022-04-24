@@ -18,7 +18,6 @@ export class AuthService {
 
 	constructor(
 		private userRepository: UserRepository,
-		private walletRepository: WalletRepository,
 		private jwtService: JwtService,
 		private configService: ConfigService,
 	) {
@@ -36,10 +35,6 @@ export class AuthService {
 			});
 			await user.save();
 
-			const wallet = this.walletRepository.create({
-				userId: user.id,
-			});
-			await wallet.save();
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
 			this.logger.log(`USER REGISTERED ID=${user.id}`);
