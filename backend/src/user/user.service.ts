@@ -2,7 +2,6 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { UserRepository } from './user.repository';
 import * as bcrypt from 'bcryptjs';
 import { UpdateUserDto } from './user.dto';
-import { UserEntity } from './user.entity';
 
 @Injectable()
 export class UserService {

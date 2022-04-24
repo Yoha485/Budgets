@@ -1,9 +1,7 @@
 import { Body, Controller, Delete, Get, Patch, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { User } from './user.decorator';
 import { UpdateUserDto } from './user.dto';
-import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 
 @UseGuards(JwtAuthGuard)
