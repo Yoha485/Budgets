@@ -1,21 +1,19 @@
-import { IsOptional, IsString } from 'class-validator'
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateCategoryDto {
-	@IsOptional()
 	@IsString()
-	name: string
+	name: string;
 
-	@IsOptional()
 	@IsString()
-	color: string
+	color: string;
 }
 
 export class UpdateCategoryDto {
 	@IsOptional()
 	@IsString()
-	name: string
+	name: string;
 
 	@IsOptional()
 	@IsString()
-	color: string
+	color: string;
 }

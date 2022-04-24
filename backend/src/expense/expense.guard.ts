@@ -1,18 +1,18 @@
 import { CanActivate, ExecutionContext, Injectable, NotFoundException } from '@nestjs/common';
-import { CategoryService } from './category.service';
+import { ExpenseService } from './expense.service';
 
 @Injectable()
 export class CategoryOwnerGuard implements CanActivate {
-	constructor(private readonly categoryService: CategoryService) {}
+	constructor(private readonly expenseService: ExpenseService) {}
 
 	async canActivate(context: ExecutionContext): Promise<boolean> {
 		const request = context.switchToHttp().getRequest();
 		const { user } = request;
 
-		const category = await this.categoryService.findById(request.params.id);
-		if (!category) {
+		const expense = await this.expenseService.findById(request.params.id);
+		if (!expense) {
 			throw new NotFoundException();
 		}
-		return category.walletId === user.walletId;
+		return expense.walletId === user.walletId;
 	}
 }
