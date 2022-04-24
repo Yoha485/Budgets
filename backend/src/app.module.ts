@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
-import { DatabaseConnectionService } from './database-connection.service';
-import { UserModule } from './user/user.module';
+import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { AuthModule } from './auth/auth.module'
+import { CategoryModule } from './categories/category.module'
+import { DatabaseConnectionService } from './database-connection.service'
+import { UserModule } from './user/user.module'
 
 @Module({
 	imports: [
@@ -16,6 +17,7 @@ import { UserModule } from './user/user.module';
 		}),
 		AuthModule,
 		UserModule,
+		CategoryModule,
 	],
 })
 export class AppModule {}
