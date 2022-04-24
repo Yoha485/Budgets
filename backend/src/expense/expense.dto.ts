@@ -6,6 +6,9 @@ export class CreateExpenseDto {
 
 	@IsNumber()
 	cost: number;
+
+	@IsNumber()
+	categoryId: number;
 }
 
 export class UpdateExpenseDto {
@@ -16,4 +19,8 @@ export class UpdateExpenseDto {
 	@IsOptional()
 	@IsString()
 	cost: number;
+
+	@IsOptional()
+	@IsNumber()
+	categoryId: number;
 }

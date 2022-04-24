@@ -20,7 +20,7 @@ export class ExpenseController {
 	}
 
 	@Get()
-	findAll(walletId: number): Promise<ExpenseEntity[]> {
+	findAll(@User('walletId') walletId: number): Promise<ExpenseEntity[]> {
 		return this.expenseService.findAll(walletId);
 	}
 

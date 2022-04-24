@@ -13,7 +13,7 @@ export class ExpenseService {
 
 	async create(walletId: number, createExpenseDto: CreateExpenseDto): Promise<ExpenseEntity> {
 		try {
-			const expense = await this.expenseRepository.save({
+			const expense = this.expenseRepository.create({
 				walletId,
 				...createExpenseDto,
 			});
