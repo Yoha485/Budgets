@@ -16,10 +16,11 @@ export class DatabaseConnectionService implements TypeOrmOptionsFactory {
 			password: this.configService.get<string>('DATABASE_PASS'),
 			database: this.configService.get<string>('DATABASE_NAME'),
 			ssl: {
+				require: true,
 				rejectUnauthorized: false,
 			},
 			synchronize: true,
-			dropSchema: true,
+			dropSchema: false,
 			logging: false,
 			entities: ['dist/**/*.entity.js'],
 		};
