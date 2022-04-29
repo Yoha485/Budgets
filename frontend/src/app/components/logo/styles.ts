@@ -6,6 +6,7 @@ export const LogoContainer = styled.div`
     flex
     items-center
     h-full
+    cursor-pointer
   `}
 `;
 
@@ -15,7 +16,7 @@ export const LogoText = styled.div`
     text-xl
     md:text-2xl
     font-extrabold
-    text-[#192c5a]
+    text-black
     ml-3
     pt-2
     font-black

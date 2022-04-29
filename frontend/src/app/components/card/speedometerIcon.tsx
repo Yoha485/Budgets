@@ -11,7 +11,7 @@ export const SpeedometerIcon = () => {
     >
       <g id="Frame 1">
         <circle id="Ellipse 1" cx="125" cy="125" r="125" fill="#00BF71" />
-        <circle id="Ellipse 2" cx="125" cy="125" r="72.5" stroke="white" stroke-width="5" />
+        <circle id="Ellipse 2" cx="125" cy="125" r="72.5" stroke="white" strokeWidth="5" />
         <circle id="Ellipse 3" cx="125" cy="125" r="65" fill="white" />
         <path
           id="Vector 1"
