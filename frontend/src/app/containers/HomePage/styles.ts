@@ -17,12 +17,12 @@ export const HeadingContainer = styled.div`
 `;
 
 export const MainTitle = styled.p`
-	${tw`font-biryani text-7xl text-[#090f47] font-extrabold`}
+	${tw`font-biryani text-7xl text-black font-extrabold`}
 	text-align: center;
 `;
 
 export const Subtitle = styled.p`
-	${tw`font-biryani text-xl text-[#979cb1] font-medium my-10`}
+	${tw`font-biryani text-xl text-[#AFAFAF] font-medium my-10`}
 	text-align: center;
 `;
 

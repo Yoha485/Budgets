@@ -7,11 +7,13 @@ interface ButtonProps {
   color: 'white' | 'green';
   rounded?: boolean;
   arrow?: boolean;
+  auth?: boolean;
+  onClick?: any;
 }
 
 export const Button = (props: ButtonProps) => {
   return (
-    <ButtonContainer background={props.color} rounded={props.rounded}>
+    <ButtonContainer onClick={props.onClick} background={props.color} rounded={props.rounded} auth={props.auth}>
       {props.text}
       {props.arrow && <MdOutlineKeyboardArrowRight size={35} />}
     </ButtonContainer>

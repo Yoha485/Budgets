@@ -14,9 +14,9 @@ export const CardText = styled.div`
 `;
 
 export const CardTitle = styled.p`
-	${tw`w-full text-[#192c5a] font-biryani text-xl font-extrabold`}
+	${tw`w-full text-black font-biryani text-xl font-extrabold`}
 `;
 
 export const CardSubtitle = styled.p`
-	${tw`w-full text-[#9b9fb2] font-biryani text-lg font-semibold`}
+	${tw`w-full text-[#AFAFAF] font-biryani text-lg font-semibold`}
 `;

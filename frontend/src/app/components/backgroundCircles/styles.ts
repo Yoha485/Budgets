@@ -11,7 +11,5 @@ export const BackgroundCirclesContainer = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 717;
-		height: 441;
 	}
 `;
