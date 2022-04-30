@@ -11,7 +11,7 @@ import { JwtStrategy } from './jwt.strategy';
 
 @Module({
 	imports: [
-		TypeOrmModule.forFeature([UserRepository]),
+		TypeOrmModule.forFeature([UserRepository, WalletRepository]),
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
 			useFactory: async (configService: ConfigService) => ({

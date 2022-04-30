@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './app/components/navbar';
-import { AuthPage } from './app/containers/AuthPage';
-import { HomePage } from './app/containers/HomePage';
-import { MainPage } from './app/containers/MainPage';
+import { AuthPage } from './app/containers/AuthPage/index';
+import { HomePage } from './app/containers/HomePage/index';
+import { MainPage } from './app/containers/MainPage/index';
 import { AppContainer } from './styles';
 
 function App() {

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Modal from 'styled-react-modal';
 
 interface CategoryProps {
+	borderColor?: string;
 	backgroundColor: string;
 }
 
@@ -24,23 +26,64 @@ export const MainTopContainer = styled.div`
 	${tw`w-full flex flex-row items-center gap-10`}
 `;
 
-export const DateContainer = styled.div`
+export const AddContainer = styled.div`
 	border-radius: 30px;
-  min-height: 88px;
-	width: 160px;
-  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
-  ${tw`bg-white`}
+	min-height: 88px;
+	width: auto;
+	filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+	padding-bottom: 22px;
+	padding-top: 22px;
+	${tw`bg-white flex flex-row px-8`}
+`;
+
+export const AddExpense = styled.div`
+	border-radius: 15px;
+	${tw`flex flex-row justify-center items-center w-[5.5rem] bg-[#556EEE] text-xl text-white pb-1 cursor-pointer`}
+`;
+
+export const StyledModal = Modal.styled`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 500px;
+  height: auto;
+  z-index: 30;
+  padding: 30px;
+  background-color: white;
+  border-radius: 30px
+`;
+
+export const ModalClose = styled.div`
+  svg { 
+    cursor: pointer;
+  }
+	${tw`flex flex-row justify-end`}
+`;
+
+export const ModalSelectCategory = styled.select`
+	${tw`outline-none border-2 p-2 rounded-lg`}
+`;
+
+export const ModalExpenseName = styled.input`
+	${tw`outline-none border-2 p-2 rounded-lg`}
+`;
+
+export const ModalExpenseCost = styled.input`${tw`outline-none border-2 p-2 rounded-lg`}`;
+
+export const ModalSubmitContainer = styled.div`
+	${tw`flex flex-row justify-end`}
 `;
 
 export const CategoriesContainer = styled.div`
 	overflow-x: scroll;
 	border-radius: 15px;
-	min-height: 90px;
-  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+	min-height: 85px;
+	filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+	padding-bottom: 15px;
+	padding-top: 22px;
 	${tw`
     w-full
-    px-3.5
-    py-[1.3rem]
+    px-8
     flex
     flex-row
     gap-4
@@ -51,18 +94,27 @@ export const CategoriesContainer = styled.div`
 
 export const CategoryContainer = styled.div`
 	// background-color: ${(props: CategoryProps) => props.backgroundColor};
-  border: 2px solid;
-  border-color: ${(props: CategoryProps) => props.backgroundColor};
+	border: 2px solid;
+	border-color: ${(props: CategoryProps) => props.backgroundColor};
 	border-radius: 15px;
+	white-space: nowrap;
 	${tw`
+    w-[7.5rem]
     flex
-    justify-center 
+    justify-center
     items-center
-    px-[2.3rem]
-    text-black
-    text-lg
-    font-semibold
+    cursor-pointer
   `}
 `;
 
-export const DonutChartContainer = styled.div``;
+export const CategoryName = styled.input`
+	background-color: inherit;
+	text-align: center;
+	${tw`w-[6.5rem] outline-none p-1 text-black text-lg font-semibold`}
+`;
+
+export const DonutChartContainer = styled.div`
+	border-radius: 15px;
+	filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+	${tw`bg-white w-[30rem] p-5`}
+`;

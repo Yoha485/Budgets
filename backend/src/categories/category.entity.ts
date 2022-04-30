@@ -4,7 +4,7 @@ import { WalletEntity } from 'src/wallet/wallet.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, Unique } from 'typeorm';
 
 @Entity('categories')
-@Unique('categories_unique', ['color'])
+// @Unique('categories_unique', ['color'])
 export class CategoryEntity extends AbstractEntity {
 	@Column()
 	name: string;

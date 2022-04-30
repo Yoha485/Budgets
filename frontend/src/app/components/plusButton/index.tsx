@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { ChromePicker } from 'react-color';
+import React from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { useDispatch } from 'react-redux';
+import { createCategory } from '../../redux/actions/category';
 import { Plus, PlusButtonContainer } from './styles';
 
 interface PlusButtonProps {
@@ -9,15 +10,20 @@ interface PlusButtonProps {
 }
 
 export const PlusButton = (props: PlusButtonProps) => {
+  const dispatch = useDispatch();
+
+  const onClickPlus = () => {
+    const body = {
+      name: '',
+      color: props.value
+    };
+    dispatch(createCategory(body));
+  };
+
   return (
     <PlusButtonContainer>
       <Plus>
-        <AiOutlinePlus
-          onClick={() => {
-            console.log(props.value);
-          }}
-          size={23}
-        />
+        <AiOutlinePlus onClick={onClickPlus} size={23} />
       </Plus>
 
       <input type="color" {...props} />
