@@ -7,6 +7,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './app/redux/index';
 import { Provider } from 'react-redux';
+import { ModalProvider } from 'styled-react-modal';
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
@@ -14,7 +15,9 @@ ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <React.StrictMode>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </React.StrictMode>
     </Provider>
   </BrowserRouter>,

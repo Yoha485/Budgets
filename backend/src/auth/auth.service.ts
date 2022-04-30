@@ -8,9 +8,9 @@ import {
 import { LoginDto, RegisterDto } from 'src/user/user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { UserRepository } from 'src/user/user.repository';
-import { WalletRepository } from 'src/wallet/wallet.repository';
 import * as bcrypt from 'bcryptjs';
 import { ConfigService } from '@nestjs/config';
+import { WalletRepository } from 'src/wallet/wallet.repository';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +18,7 @@ export class AuthService {
 
 	constructor(
 		private userRepository: UserRepository,
+		private walletRepository: WalletRepository,
 		private jwtService: JwtService,
 		private configService: ConfigService,
 	) {
@@ -34,15 +35,18 @@ export class AuthService {
 				),
 			});
 			await user.save();
+			
+			const wallet = this.walletRepository.create({ userId: user.id });
+			await wallet.save();
 
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
 			this.logger.log(`USER REGISTERED ID=${user.id}`);
-			return { user: { ...user.toJson(), token } };
+			return { user: { ...user.toJson(), walletId: wallet.id, token } };
 		} catch (error) {
 			this.logger.error(error);
 			if (error.code === '23505') {
-				throw new ConflictException('Username has alredy been taken');
+				throw new ConflictException('Username has already been taken');
 			}
 			throw new InternalServerErrorException();
 		}
@@ -55,10 +59,11 @@ export class AuthService {
 			if (!isValid) {
 				throw new UnauthorizedException('Invalid credentials');
 			}
+			const wallet = await this.walletRepository.findOneOrFail({ where: { userId: user.id } });
 			const payload = { id: user.id };
 			const token = this.jwtService.sign(payload);
 			this.logger.log(`USER LOGGED IN ID=${user.id}`);
-			return { user: { ...user.toJson(), token } };
+			return { user: { ...user.toJson(), walletId: wallet.id, token } };
 		} catch (error) {
 			this.logger.error(error);
 			throw new UnauthorizedException('Invalid credentials');
