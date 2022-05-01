@@ -3,7 +3,6 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../components/button';
 import { Marginer } from '../../components/marginer';
-import { fetchCategories } from '../../redux/actions/category';
 import { createExpense } from '../../redux/actions/expense';
 import { StyledModal, ModalClose, ModalSelectCategory, ModalExpenseName, ModalSubmitContainer, ModalExpenseCost } from './styles';
 
