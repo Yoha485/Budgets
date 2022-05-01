@@ -1,3 +1,4 @@
+import { layouts } from 'chart.js';
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
@@ -11,14 +12,25 @@ export const DonutChart = () => {
     datasets: [
       {
         data: categories.map((c: any) => c.overallCost),
-        backgroundColor: categories.map((c: any) => c.color),
+        backgroundColor: categories.map((c: any) => c.color)
       }
     ]
   };
 
+  const options = {
+    layout: {
+      padding: {
+        left: 12,
+        right: 12,
+        bottom: 12,
+      },
+    }
+  }
+
+
   return (
     <DonutChartContainer>
-      <Doughnut data={data} redraw={true} />
+      <Doughnut data={data} redraw={true} options={options} />
     </DonutChartContainer>
   );
 };

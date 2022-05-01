@@ -18,7 +18,6 @@ export const MainPageContainer = styled.div`
     w-full
     h-screen
     items-center
-    overflow-x-hidden
   `}
 `;
 
@@ -50,7 +49,7 @@ export const StyledModal = Modal.styled`
   z-index: 30;
   padding: 30px;
   background-color: white;
-  border-radius: 30px
+  border-radius: 30px;
 `;
 
 export const ModalClose = styled.div`
@@ -116,14 +115,14 @@ export const CategoryName = styled.input`
 `;
 
 export const DataContainer = styled.div`
-	${tw`w-full flex flex-row items-center gap-10`}
+	${tw`w-full flex md:flex-row flex-col items-center gap-10`}
 `;
 
 export const HistoryContainer = styled.div`
 	border-radius: 15px;
 	filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
 	overflow-y: scroll;
-	${tw`flex flex-col gap-1 bg-white w-full h-full p-5`}
+	${tw`min-w-[20rem] flex flex-col gap-1 bg-white w-full h-full p-5`}
 `;
 
 export const HistoryTitle = styled.div`
@@ -148,7 +147,8 @@ export const Cost = styled.div`
 `;
 
 export const DonutChartContainer = styled.div`
+	position: relative;
 	border-radius: 15px;
 	filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
-	${tw`bg-white w-[30rem] p-5`}
+	${tw`bg-white md:w-[30rem] w-[98%] m-0`}
 `;

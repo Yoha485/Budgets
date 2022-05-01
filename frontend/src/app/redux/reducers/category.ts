@@ -8,7 +8,14 @@ const categoryReducer = (state: Category[] = [], action: AnyAction) => {
 		case actionTypes.CREATE_CATEGORY:
 			return [...state, action?.payload];
 		case actionTypes.UPDATE_CATEGORY:
-			return state.map((category: Category) => (category.id === action.payload ? action.payload : category));
+			return state.filter((category: any) => {
+				if (category.id === action.payload.id) {
+					category.name = action.payload.name;
+					return category;
+				} else {
+					return category;
+				}
+			});
 		case actionTypes.CREATE_EXPENSE:
 			return state.filter((category: any) => {
 				if (category.id === action.payload.categoryId) {
