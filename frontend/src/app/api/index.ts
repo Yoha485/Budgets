@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:4000/' });
+const API = axios.create({ baseURL: 'https://nestjs-budgets.herokuapp.com/' });
 
 API.interceptors.request.use((req: any) => {
 	if (localStorage.getItem('user')) {
