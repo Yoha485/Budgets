@@ -16,7 +16,7 @@ export const MainPageContainer = styled.div`
     flex
     flex-col
     w-full
-    h-full
+    h-screen
     items-center
     overflow-x-hidden
   `}
@@ -54,9 +54,9 @@ export const StyledModal = Modal.styled`
 `;
 
 export const ModalClose = styled.div`
-  svg { 
-    cursor: pointer;
-  }
+	svg {
+		cursor: pointer;
+	}
 	${tw`flex flex-row justify-end`}
 `;
 
@@ -68,7 +68,9 @@ export const ModalExpenseName = styled.input`
 	${tw`outline-none border-2 p-2 rounded-lg`}
 `;
 
-export const ModalExpenseCost = styled.input`${tw`outline-none border-2 p-2 rounded-lg`}`;
+export const ModalExpenseCost = styled.input`
+	${tw`outline-none border-2 p-2 rounded-lg`}
+`;
 
 export const ModalSubmitContainer = styled.div`
 	${tw`flex flex-row justify-end`}
@@ -111,6 +113,38 @@ export const CategoryName = styled.input`
 	background-color: inherit;
 	text-align: center;
 	${tw`w-[6.5rem] outline-none p-1 text-black text-lg font-semibold`}
+`;
+
+export const DataContainer = styled.div`
+	${tw`w-full flex flex-row items-center gap-10`}
+`;
+
+export const HistoryContainer = styled.div`
+	border-radius: 15px;
+	filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+	overflow-y: scroll;
+	${tw`flex flex-col gap-1 bg-white w-full h-full p-5`}
+`;
+
+export const HistoryTitle = styled.div`
+	${tw`flex flex-row text-xl font-bold pb-3`}
+`;
+
+export const HistoryToken = styled.div`
+	position: relative;
+	${tw`flex flex-row`}
+`;
+
+export const ExpenseName = styled.div`
+	p {
+		${tw`font-semibold`}
+	}
+`;
+
+export const Cost = styled.div`
+	position: absolute;
+	right: 0;
+	${tw`text-[#DE1919] place-self-end font-medium`}
 `;
 
 export const DonutChartContainer = styled.div`

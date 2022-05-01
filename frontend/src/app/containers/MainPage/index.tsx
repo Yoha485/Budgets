@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { useNavigate } from 'react-router-dom';
 import { MainPageContainer } from './styles';
-import { DonutChart } from './donutChart';
 import { MainTop } from './mainTop';
 import { Marginer } from '../../components/marginer';
 import { useDispatch } from 'react-redux';
 import { fetchCategories } from '../../redux/actions/category';
+import { Data } from './data';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -32,7 +32,7 @@ export const MainPage = () => {
 
       <Marginer mb='30px' />
 
-      <DonutChart />
+      <Data />
     </MainPageContainer>
   );
 };

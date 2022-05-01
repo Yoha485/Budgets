@@ -20,8 +20,8 @@ export class CategoryController {
 	}
 
 	@Get()
-	findAll(@User('walletId') walletId: number): Promise<CategoryEntity[]> {
-		return this.categoryService.findAll(walletId);
+	findAllGroupedByCategory(@User('walletId') walletId: number): Promise<any> {
+		return this.categoryService.findAllGroupedByCategory(walletId);
 	}
 
 	@Get(':id')

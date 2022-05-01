@@ -17,4 +17,5 @@ export const fetchCategories = () => API.get('category');
 export const createCategory = (formData: CreateCategoryForm) => API.post('category', formData);
 export const updateCategory = (formData: UpdateCategoryForm, id: number) => API.patch(`category/${id}`, formData);
 
+export const fetchExpenses = () => API.get('expenses');
 export const createExpense = (formData: CreateExpenseForm) => API.post('expense', formData);

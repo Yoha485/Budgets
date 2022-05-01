@@ -9,6 +9,16 @@ const categoryReducer = (state: Category[] = [], action: AnyAction) => {
 			return [...state, action?.payload];
 		case actionTypes.UPDATE_CATEGORY:
 			return state.map((category: Category) => (category.id === action.payload ? action.payload : category));
+		case actionTypes.CREATE_EXPENSE:
+			return state.filter((category: any) => {
+				if (category.id === action.payload.categoryId) {
+					category.expenses.push(action.payload);
+					category.overallCost = category.overallCost + action.payload.cost;
+					return category;
+				} else {
+					return category;
+				}
+			});
 		default:
 			return state;
 	}

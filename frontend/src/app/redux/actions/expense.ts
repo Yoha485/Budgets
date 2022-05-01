@@ -5,8 +5,7 @@ import * as actionTypes from '../actionTypes';
 export const createExpense = (body: CreateExpenseForm) => async (dispatch: Dispatch) => {
 	try {
 		const { data } = await api.createExpense(body);
-		// dispatch({ type: actionTypes.CREATE_EXPENSE, payload: data });
-    console.log('done')
+		dispatch({type: actionTypes.CREATE_EXPENSE, payload: data});
 	} catch (error) {
 		console.log(error);
 	}
