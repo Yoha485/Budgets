@@ -11,6 +11,7 @@ export const signIn =
 			dispatch({ type: actionTypes.AUTH, data });
 			navigate('/main');
 		} catch (error) {
+			alert('Bad Credentials')
 			console.log(error);
 		}
 	};
@@ -23,6 +24,7 @@ export const signUp =
 			dispatch({ type: actionTypes.AUTH, data });
 			navigate('/main');
 		} catch (error) {
+			alert('Bad Credentials')
 			console.log(error);
 		}
 	};

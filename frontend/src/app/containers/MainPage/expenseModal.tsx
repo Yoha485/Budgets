@@ -21,6 +21,7 @@ export const ExpenseModal = (props: ExpenseModalProps) => {
 
   const handleSubmit = () => {
     if(expenseName === null || cost === null || selectedCategory === null) {
+      alert('Invalid Data')
       return;
     }
 
@@ -31,6 +32,9 @@ export const ExpenseModal = (props: ExpenseModalProps) => {
     };
     
     dispatch(createExpense(body));
+    setSelectedCategory(null);
+    setExpenseName('');
+    setCost(null);
     props.closeModal();
   };
 
@@ -56,7 +60,6 @@ export const ExpenseModal = (props: ExpenseModalProps) => {
 
       <ModalExpenseName
         placeholder="Expense name"
-        value={expenseName}
         onChange={(e) => {
           setExpenseName(e.target.value);
         }}

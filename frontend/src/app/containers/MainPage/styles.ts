@@ -44,7 +44,7 @@ export const StyledModal = Modal.styled`
   display: flex;
   flex-direction: column;
   position: fixed;
-  width: 500px;
+  width: 66.666667%;
   height: auto;
   z-index: 30;
   padding: 30px;

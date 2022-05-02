@@ -7,6 +7,7 @@ export const createExpense = (body: CreateExpenseForm) => async (dispatch: Dispa
 		const { data } = await api.createExpense(body);
 		dispatch({type: actionTypes.CREATE_EXPENSE, payload: data});
 	} catch (error) {
+		alert('Invalid Data')
 		console.log(error);
 	}
 };
