@@ -19,7 +19,7 @@ const categoryReducer = (state: Category[] = [], action: AnyAction) => {
 		case actionTypes.CREATE_EXPENSE:
 			return state.filter((category: any) => {
 				if (category.id === action.payload.categoryId) {
-					category.expenses.push(action.payload);
+					category.expenses?.push(action.payload);
 					category.overallCost = category.overallCost + action.payload.cost;
 					return category;
 				} else {
